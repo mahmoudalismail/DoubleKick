@@ -17,3 +17,6 @@ Execute the code below inside the folder **doublekick**
 
 and the app will run, out of the box. 
 
+==========
+
+More info to come!

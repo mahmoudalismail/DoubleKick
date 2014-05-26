@@ -5,7 +5,9 @@ from django.contrib.auth import authenticate, login
 
 urlpatterns = patterns('',
     # the index login page 
-    url(r'^$', views.index, name='index')#,
+    url(r'^$', views.index, name='index'),
+    url(r'loginForm/$', views.loginForm, name='loginForm'),
+    url(r'login/$', views.custom_login, name='login'),
     # url(r'login/$', views.custom_login, name='login'),
     # url(r'home/$', views.loadHome, name='loadHome'),
     # url(r'quest/$', views.loadQuest, name='loadQuest'),

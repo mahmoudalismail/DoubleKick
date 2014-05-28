@@ -28,10 +28,6 @@
 </head>
 
 <body id="page-top" class="index">
-
-
-
-      
         <section id="contact">
         <div class="container">
             
@@ -50,7 +46,40 @@
             <div class="tab-content">
                 
                 <div class="tab-pane fade in active" id="teama">
-                        <div class="col-md-3">
+                {% if team1 %}
+
+                {% for player in team1 %}
+                <div class="col-md-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+					<h3 style="margin-left:23px"><a href="">{{player.firstName}} {{player.lastName}}</a>
+					</h3>
+					</div> 
+					
+					 
+				<div style="min-height:100px; padding-top: 20px;padding-bottom: 20px;padding-left: 70px;" class="panel-body">
+                                    <a href="">
+                                        <img src="{% url 'decode' player.id %}" height="120px" weight="120px">
+                                    </a>
+					        <div class="clear"></div>
+                                <p style="text-align: center;"></p>
+                                <div class="text-left">
+	                                <b>Username:</b> {{player.playerInfo.username}}<br>
+							        <b>Position:</b> {{player.position}}<br>
+							        <b>Matches Played:</b> {{player.nMatchesPlayed}}<br>
+							        <b>Speed:</b> {{player.speed}}<br>
+							        <b>Shooting:</b> {{player.shooting}}<br>
+							        <b>Team Work:</b> {{player.teamWork}}<br>
+							        <b>Passing:</b> {{player.passing}}<br>
+						    	</div>
+					 </div> 
+				</div> 
+				</div>
+				{% endfor %}
+				{% else %}
+					No players at this game
+				{% endif %}
+<!--                         <div class="col-md-3">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 					<h3 style="margin-left:23px"><a href="">Player A </a>
@@ -122,7 +151,7 @@
                                                 <p style="text-align: center;">Mohamed </p>      
 					 </div> 
 				</div> 
-			</div>
+			</div> -->
                   
                         
                 </div>
@@ -131,7 +160,7 @@
                      <div class="col-md-6">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-					<h3 style="margin-left:23px"><a href="">Sutton</a>
+					<h3 style="margin-left:23px"><a href="">{{game.field.fieldName}}</a>
 					</h3>
 					</div><!-- end div #widget-header -->
 					
@@ -139,9 +168,10 @@
 				<div style="min-height:250px; padding:30px" class="panel-body">
                                     <a href=""><img class="img-polaroid" src="./img/player-sample.jpg"></a>
 					        <div class="clear"></div>
-					    
-					        <b>Date :</b> 22/05/2014<br><br>
-					        <b>Time:</b> 1 PM<br>
+					    	Field Name: {{game.field.fieldName}}<br>
+                            Field Location: {{game.field.location}}<br>
+                            Game Time: {{game.timeDate}}<br>
+					        
 					 </div><!-- end div #row-content -->
 				</div><!-- end div #widget widget-box -->
 			</div>
@@ -152,7 +182,61 @@
                 
                 
                           <div class="tab-pane fade" id="teamb">
-                        <div class="col-md-3">
+                {% if team2 %}
+
+                {% for player in team2 %}
+                <div class="col-md-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+					<h3 style="margin-left:23px"><a href="">{{player.firstName}} {{player.lastName}}</a>
+					</h3>
+					</div> 
+					
+					 
+				<div style="min-height:100px; padding-top: 20px;padding-bottom: 20px;padding-left: 70px;" class="panel-body">
+                                    <a href="">
+                                        <img src="{% url 'decode' player.id %}" height="120px" weight="120px">
+                                    </a>
+					        		<div class="clear"></div>
+					        		<div class="text-left">
+										<b>Username:</b> {{player.playerInfo.username}}<br>
+								        <b>Position:</b> {{player.position}}<br>
+								        <b>Matches Played:</b> {{player.nMatchesPlayed}}<br>
+								        <b>Speed:</b> {{player.speed}}<br>
+								        <b>Shooting:</b> {{player.shooting}}<br>
+								        <b>Team Work:</b> {{player.teamWork}}<br>
+								        <b>Passing:</b> {{player.passing}}<br>
+								    </div>
+                                        <p style="text-align: center;">
+                                        </p>      
+				</div> 
+				</div> 
+				</div>
+				{% endfor %}
+				{% else %}
+					No players at this game
+				{% endif %}
+                              
+<!--                                 <div class="col-md-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+					<h3 style="margin-left:23px"><a href="">Player A </a>
+					</h3>
+					</div> 
+					
+					 
+				<div style="min-height:100px; padding-top: 20px;padding-bottom: 20px;padding-left: 70px;" class="panel-body">
+                                    <a href="">
+                                        <img src="./img/football.png">
+                                    </a>
+					        <div class="clear"></div>
+                                                <p style="text-align: center;">Mohamed </p>      
+					 </div> 
+				</div> 
+			</div>
+                              
+                              
+                                <div class="col-md-3">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 					<h3 style="margin-left:23px"><a href="">Player A </a>
@@ -186,44 +270,7 @@
                                                 <p style="text-align: center;">Mohamed </p>      
 					 </div> 
 				</div> 
-			</div>
-                              
-                              
-                                <div class="col-md-3">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-					<h3 style="margin-left:23px"><a href="">Player A </a>
-					</h3>
-					</div> 
-					
-					 
-				<div style="min-height:100px; padding-top: 20px;padding-bottom: 20px;padding-left: 70px;" class="panel-body">
-                                    <a href="">
-                                        <img src="./img/football.png">
-                                    </a>
-					        <div class="clear"></div>
-                                                <p style="text-align: center;">Mohamed </p>      
-					 </div> 
-				</div> 
-			</div>
-                              
-                                <div class="col-md-3">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-					<h3 style="margin-left:23px"><a href="">Player A </a>
-					</h3>
-					</div> 
-					
-					 
-				<div style="min-height:100px; padding-top: 20px;padding-bottom: 20px;padding-left: 70px;" class="panel-body">
-                                    <a href="">
-                                        <img src="./img/football.png">
-                                    </a>
-					        <div class="clear"></div>
-                                                <p style="text-align: center;">Mohamed </p>      
-					 </div> 
-				</div> 
-			</div>
+			</div> -->
                     
                   
                         

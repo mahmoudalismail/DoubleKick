@@ -209,3 +209,42 @@ def joinGame2(request, gameID):
 @login_required(login_url='/app/login/')
 def teams(request):
 	return render(request, 'doublekickApp/UI/design/teams.html',{});
+
+@login_required(login_url='/app/login/')
+def showGame(request, gameID):
+
+	game = Game.objects.get(id=gameID)
+
+	teams = game.teams.split(",")
+
+	# clean the list
+	for i in teams:
+		if i == '':
+			teams.remove(i)
+	
+	team1 = []
+	team2 = []
+
+	# we have a clean list now		
+	for i in range(0,len(teams),2):
+
+		if i >= len(teams)+1:
+			break
+		if int(teams[i+1]) == 1:
+			# should be in team1
+			team1.append(int(teams[i]))
+		else:
+			# should be in team2
+			team2.append(int(teams[i]))
+
+	print "TEAM1", team1
+	print "TEAM2", team2
+
+	# now get all players info
+	team1Players = Player.objects.filter(pk__in=team1)
+	print team1Players
+	team2Players = Player.objects.filter(pk__in=team2)
+
+
+	return render(request, 'doublekickApp/UI/design/teams.html',
+				{'game': game, 'team1': team1Players,'team2': team2Players});

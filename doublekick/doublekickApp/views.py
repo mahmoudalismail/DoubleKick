@@ -17,7 +17,7 @@ import json
 import string
 
 def index(request):
-	return render(request, 'doublekickApp/UI/design/index.html',{});
+	return render(request, 'doublekickApp/UI/design/newindex/index.html',{});
 
 def signupForm(request):
 	
@@ -136,6 +136,7 @@ def newGameForm(request):
 @login_required(login_url='/app/loginForm/')
 def logoutUser(request):
 	logout(request)
+	return HttpResponseRedirect(reverse('doublekickApp.views.index',))
 
 @login_required(login_url='/app/loginForm/')
 def newGame(request):
@@ -204,3 +205,7 @@ def joinGame2(request, gameID):
 	
 	player.save()
 	game.save()
+
+@login_required(login_url='/app/login/')
+def teams(request):
+	return render(request, 'doublekickApp/UI/design/teams.html',{});

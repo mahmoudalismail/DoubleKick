@@ -38,6 +38,8 @@ class Player(models.Model):
 	teamWork = models.IntegerField(max_length=200)
 	passing = models.IntegerField(max_length=200)
 
+	upcomingGames = models.CharField(max_length=1000)
+
 	def __unicode__(self):
 		return self.playerInfo.username
 
@@ -51,6 +53,8 @@ class Field(models.Model):
 	#location
 	location = models.CharField(max_length=1000)
 
+	def __unicode__(self):
+		return self.location
 
 class Game(models.Model):
 	# teams
@@ -59,9 +63,11 @@ class Game(models.Model):
 	field = models.ForeignKey(Field)
 	#time/date
 	timeDate = models.CharField(max_length=200)
+	# game status <> finished/not finished
+	gameFinished = models.BooleanField(default=False)
 
-
-
+	def __unicode__(self):
+		return self.field.fieldName
 
 
 
